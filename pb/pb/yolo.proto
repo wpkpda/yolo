@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package yolo;
+option go_package = "yolo/pb";
+
+message Image {
+  bytes data = 1;
+}
+
+message Box {
+  float x1 = 1;
+  float y1 = 2;
+  float x2 = 3;
+  float y2 = 4;
+  float confidence = 5;
+  string label = 6;
+}
+
+message Detection {
+  repeated Box boxes = 1;
+}
+
+message Classnames {
+  repeated string names = 1;
+}
+
+message DetectionRequest {
+  Image image = 1;
+}
+
+message ClassnamesRequest {
+}
+
+service YOLO_RPC {
+  rpc Detect(DetectionRequest) returns (Detection) {};
+  rpc GetClassnames(ClassnamesRequest) returns (Classnames) {};
+}

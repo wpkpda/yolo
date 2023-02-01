@@ -8,4 +8,4 @@ ADD pb /app/pb
 
 WORKDIR /app
 
-ENTRYPOINT ["python3", "server.py"]
+ENTRYPOINT ["python3", "-u", "server.py"]
